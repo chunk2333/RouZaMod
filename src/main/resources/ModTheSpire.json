@@ -1,0 +1,17 @@
+{
+  "modid": "RouZa",
+  "name": "糅杂-怪物加强",
+  "author_list": [
+    "依巴",
+    "天宇"
+  ],
+  "description": "加强了一些怪物。",
+  "dependencies": [
+    "basemod",
+    "stslib"
+  ],
+  "version": "0.0.1",
+  "credits": "要来咯！！！",
+  "sts_version": "12-18-2022",
+  "mts_version": "3.24.0"
+}

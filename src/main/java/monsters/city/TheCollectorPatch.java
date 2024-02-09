@@ -36,11 +36,9 @@ public class TheCollectorPatch {
             }
         }
 
-        @SpireInsertPatch(loc = 180)
+        @SpireInsertPatch(loc = 176)
         public static void InsertFix03(TheCollector __instance){
-            if(getNum() < 3){
-                AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new TorchHead(-700, MathUtils.random(-5.0F, 25.0F)), true));
-            }
+            AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new TorchHead(-700, MathUtils.random(-5.0F, 25.0F)), true));
         }
     }
 }

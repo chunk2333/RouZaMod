@@ -31,6 +31,9 @@ public class TheGuardianPatch {
     public static class onAttackedFix{
         @SpireInsertPatch(rloc = 0, localvars = {"info", "damageAmount"})
         public static SpireReturn<Integer> Fix(AbstractPower __instance, DamageInfo ___info, int ___damageAmount){
+            if(___info.owner == __instance.owner){
+                return SpireReturn.Return(___damageAmount);
+            }
             if(!__instance.ID.equals("Sharp Hide")){
                 return SpireReturn.Return(___damageAmount);
             }

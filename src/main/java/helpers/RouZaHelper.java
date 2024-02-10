@@ -39,4 +39,19 @@ public class RouZaHelper {
         }
         return list.get(AbstractDungeon.cardRandomRng.random(list.size() - 1));
     }
+
+    public static AbstractCard getRandomStatusOrCurseCard(){
+        AbstractCard c;
+        if(AbstractDungeon.monsterRng.randomBoolean()){
+            c = RouZaHelper.getRandomCurseCard();
+        } else {
+            c = RouZaHelper.getRandomStatusCard();
+        }
+        if(c.cardID.equals("Burn")){
+            if(AbstractDungeon.monsterRng.randomBoolean()){
+                c.upgrade();
+            }
+        }
+        return c;
+    }
 }

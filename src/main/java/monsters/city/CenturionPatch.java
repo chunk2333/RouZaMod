@@ -138,7 +138,9 @@ public class CenturionPatch {
                     (AbstractDungeon.getCurrRoom()).cannotLose = false;
                     __instance.halfDead = false;
                     for (AbstractMonster m : (AbstractDungeon.getMonsters()).monsters)
-                        m.die();
+                        if(!m.id.equals("Champ")){
+                            m.die();
+                        }
                 }
                 return SpireReturn.Return();
             } else if (___info.owner != null && ___info.type != DamageInfo.DamageType.THORNS && ___info.output > 0) {

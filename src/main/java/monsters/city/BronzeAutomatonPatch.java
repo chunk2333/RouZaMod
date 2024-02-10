@@ -1,6 +1,6 @@
 package monsters.city;
 //铜人：社保完毕会偷取你身上的所有正面buff。+20血   铜人开局获得10点再生
-import actions.StealBuffAction;
+import actions.RouZaStealBuffAction;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
@@ -32,7 +32,7 @@ public class BronzeAutomatonPatch {
     public static class takeTurnFix{
         @SpireInsertPatch(loc = 136)
         public static void InsertFix01(BronzeAutomaton __instance){
-            AbstractDungeon.actionManager.addToBottom(new StealBuffAction(__instance, AbstractDungeon.player.powers.size()));
+            AbstractDungeon.actionManager.addToBottom(new RouZaStealBuffAction(__instance, AbstractDungeon.player.powers.size()));
         }
     }
 }

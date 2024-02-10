@@ -1,6 +1,6 @@
 package monsters.city;
 //火炬头：攻击时会偷取一项buff（最多仨），加10血
-import actions.StealBuffAction;
+import actions.RouZaStealBuffAction;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
@@ -21,7 +21,7 @@ public class TorchHeadPatch {
         @SpireInsertPatch(loc = 62)
         public static void InsertFix01(TorchHead __instance){
             if(__instance.powers.size() < 5){
-                AbstractDungeon.actionManager.addToBottom(new StealBuffAction(__instance, 1));
+                AbstractDungeon.actionManager.addToBottom(new RouZaStealBuffAction(__instance, 1));
             }
         }
     }

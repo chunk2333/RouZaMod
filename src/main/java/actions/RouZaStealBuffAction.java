@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import java.util.ArrayList;
 
-public class StealBuffAction extends AbstractGameAction {
+public class RouZaStealBuffAction extends AbstractGameAction {
 
     private final AbstractMonster m;
 
@@ -20,7 +20,7 @@ public class StealBuffAction extends AbstractGameAction {
 
     private int count;
 
-    public StealBuffAction(AbstractMonster toGive, int count){
+    public RouZaStealBuffAction(AbstractMonster toGive, int count){
         this.m = toGive;
         this.count = count;
     }

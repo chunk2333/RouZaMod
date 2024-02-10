@@ -1,5 +1,6 @@
 package monsters.city;
 //第勇：加1血，第二回合召唤狗男女，获得壁垒。
+import actions.MonsterUsePreBattleAction;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.animations.AnimateShakeAction;
@@ -37,9 +38,15 @@ public class ChampPatch {
         @SpireInsertPatch(loc = 149)
         public static SpireReturn<Void> Fix(Champ __instance){
             if (__instance.nextMove == (byte)114514){
+                AbstractMonster healer;
+                AbstractMonster centurion;
+                healer = new Healer(200.0F, 20.0F);
+                centurion = new Centurion(-455.0F, 0.0F);
                 AbstractDungeon.actionManager.addToBottom(new AnimateShakeAction(__instance, 1.0F, 0.1F));
-                AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new Healer(200.0F, 20.0F), false));
-                AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new Centurion(-455.0F, 0.0F), false));
+                AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(healer, false));
+                AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(centurion, false));
+                AbstractDungeon.actionManager.addToBottom(new MonsterUsePreBattleAction(healer));
+                AbstractDungeon.actionManager.addToBottom(new MonsterUsePreBattleAction(centurion));
                 AbstractDungeon.actionManager.addToBottom(new RollMoveAction(__instance));
                 return SpireReturn.Return();
             }

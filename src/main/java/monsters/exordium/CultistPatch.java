@@ -1,11 +1,9 @@
 package monsters.exordium;
 //邪教徒，第2/3次攻击会给予易伤/虚弱持续一回合，并且修改其意图图标。增加5点血量。
-import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
-import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
+import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.exordium.Cultist;
@@ -23,10 +21,24 @@ public class CultistPatch {
         }
     }
 
-
-
     @SpirePatch(clz = Cultist.class, method = "takeTurn")
     public static class CultistPatchInsertFix{
+        @SpirePrefixPatch
+        public static void PreFix(Cultist __instance){
+            boolean hasAwakenedOne = false;
+            for (AbstractMonster m: AbstractDungeon.getCurrRoom().monsters.monsters){
+                if (m.id.equals("AwakenedOne")) {
+                    hasAwakenedOne = true;
+                    break;
+                }
+            }
+            for (AbstractMonster m: AbstractDungeon.getCurrRoom().monsters.monsters){
+                if (!m.isDead && !m.isDying && hasAwakenedOne){
+                    AbstractDungeon.actionManager.addToBottom(new GainBlockAction(m, __instance, 7));
+                }
+            }
+        }
+
         @SpireInsertPatch(loc = 106)
         public static void Insert(Cultist __instance){
             if(GameActionManager.turn == 3){

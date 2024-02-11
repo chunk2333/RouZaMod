@@ -1,4 +1,4 @@
-package monsters.beyond;
+package monsters.ending;
 //高塔之矛：加20血，开局获得壁垒和1点力量，塞牌同三柱，4段攻击后给予玩家一层脆弱。
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;

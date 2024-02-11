@@ -1,4 +1,4 @@
-package monsters.beyond;
+package monsters.ending;
 //高塔之盾：开局获得30格挡，壁垒，加20血 重击给予玩家应急按钮的debuff  不能从卡牌中获得格挡
 import com.evacipated.cardcrawl.modthespire.lib.SpireInsertPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;

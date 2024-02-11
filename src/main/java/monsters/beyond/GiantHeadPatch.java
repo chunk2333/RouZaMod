@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.beyond.GiantHead;
 import com.megacrit.cardcrawl.powers.FrailPower;
+import com.megacrit.cardcrawl.powers.TimeWarpPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
@@ -23,6 +24,7 @@ public class GiantHeadPatch {
         @SpirePostfixPatch
         public static void PostFix(GiantHead __instance){
             AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(__instance, __instance, "Slow"));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(__instance, __instance, new TimeWarpPower(__instance)));
         }
     }
     @SpirePatch(clz = GiantHead.class, method = "takeTurn")

@@ -22,19 +22,19 @@ public class SlimeBossPatch {
         }
     }
 
-    @SpirePatch(clz = SlimeBoss.class, method = "damage")
-    public static class PatchSplit{
-        @SpireInsertPatch(loc = 175)
-        public static void InsertFix(SlimeBoss __instance){
-            if (!__instance.isDying && __instance.currentHealth <= 100 && __instance.nextMove != 3) {
-                MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings("SlimeBoss");
-                String[] MOVES = monsterStrings.MOVES;
-                String SPLIT_NAME = MOVES[2];
-                __instance.setMove(SPLIT_NAME, (byte)3, AbstractMonster.Intent.UNKNOWN);
-                __instance.createIntent();
-                AbstractDungeon.actionManager.addToBottom(new TextAboveCreatureAction(__instance, TextAboveCreatureAction.TextType.INTERRUPTED));
-                AbstractDungeon.actionManager.addToBottom(new SetMoveAction(__instance, SPLIT_NAME, (byte)3, AbstractMonster.Intent.UNKNOWN));
-            }
-        }
-    }
+//    @SpirePatch(clz = SlimeBoss.class, method = "damage")
+//    public static class PatchSplit{
+//        @SpireInsertPatch(loc = 175)
+//        public static void InsertFix(SlimeBoss __instance){
+//            if (!__instance.isDying && __instance.currentHealth <= 100 && __instance.nextMove != 3) {
+//                MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings("SlimeBoss");
+//                String[] MOVES = monsterStrings.MOVES;
+//                String SPLIT_NAME = MOVES[2];
+//                __instance.setMove(SPLIT_NAME, (byte)3, AbstractMonster.Intent.UNKNOWN);
+//                __instance.createIntent();
+//                AbstractDungeon.actionManager.addToBottom(new TextAboveCreatureAction(__instance, TextAboveCreatureAction.TextType.INTERRUPTED));
+//                AbstractDungeon.actionManager.addToBottom(new SetMoveAction(__instance, SPLIT_NAME, (byte)3, AbstractMonster.Intent.UNKNOWN));
+//            }
+//        }
+//    }
 }
